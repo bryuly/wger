@@ -80,37 +80,37 @@ services:
       start_period: 30s
     restart: unless-stopped
 
-  celery_worker:
-    image: wger/server:latest
-    command: /start-worker
-    env_file:
-      - ./config/stack.env
-    volumes:
-      - media:/home/wger/media
-    depends_on:
-      web:
-        condition: service_healthy
-    healthcheck:
-      test: celery -A wger inspect ping
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 30s
+#  celery_worker:
+#    image: wger/server:latest
+#    command: /start-worker
+#    env_file:
+#      - ./config/stack.env
+#    volumes:
+#      - media:/home/wger/media
+#    depends_on:
+#      web:
+#        condition: service_healthy
+#    healthcheck:
+#      test: celery -A wger inspect ping
+#      interval: 10s
+#      timeout: 5s
+#      retries: 5
+#      start_period: 30s
 
-  celery_beat:
-    image: wger/server:latest
-    command: /start-beat
-    volumes:
-      - celery-beat:/home/wger/beat/
-    env_file:
-      - ./config/stack.env
-    depends_on:
-      celery_worker:
-        condition: service_healthy
+#  celery_beat:
+#    image: wger/server:latest
+#    command: /start-beat
+#    volumes:
+#      - celery-beat:/home/wger/beat/
+#    env_file:
+#      - ./config/stack.env
+#    depends_on:
+#      celery_worker:
+#        condition: service_healthy
 
 volumes:
   postgres-data:
-  celery-beat:
+#  celery-beat:
   static:
   media:
   redis-data:
