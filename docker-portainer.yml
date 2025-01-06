@@ -8,27 +8,27 @@
 name: wger
 
 services:
-#  web:
-#    image: wger/server:latest
-#    depends_on:
-#      db:
-#        condition: service_healthy
-#      cache:
-#        condition: service_healthy
-#    env_file:
-#      - ./config/stack.env
-#    volumes:
-#      - static:/home/wger/static
-#      - media:/home/wger/media
-#    expose:
-#      - 8000
+  web:
+    image: wger/server:latest
+    depends_on:
+      db:
+        condition: service_healthy
+      cache:
+        condition: service_healthy
+    env_file:
+      - ./config/stack.env
+    volumes:
+      - static:/home/wger/static
+      - media:/home/wger/media
+    expose:
+      - 8000
 #    healthcheck:
 #      test: wget --no-verbose --tries=1 --spider http://localhost:8000
 #      interval: 10s
 #      timeout: 5s
 #      start_period: 300s
 #      retries: 5
-#    restart: unless-stopped
+    restart: unless-stopped
 
   nginx:
     image: nginx:stable
