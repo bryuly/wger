@@ -5,6 +5,8 @@
 # it, configure yours similarly to what's in config/nginx.conf
 # Also take a look at the "Static files" section in the .env file
 
+name: wger
+
 services:
   web:
     image: wger/server:latest
